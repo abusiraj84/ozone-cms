@@ -360,12 +360,12 @@
                             <div class="col-3 my-auto">
 
                             <a href="#" title="Play video" class="play"></a>
-                            <!-- <button class="btn btn-primary " data-action="play">
+                            <button class="btn btn-primary " data-action="play">
                             <i class="glyphicon glyphicon-play"></i>
                             Play /
                             <i class="glyphicon glyphicon-pause"></i>
                             Pause
-                        </button> -->
+                        </button>
                             </div>
                             <div id="waveform" class="col-9">
                                <center><div id="loading"></div></center> 
