@@ -96,4 +96,15 @@ class HomepageController extends Controller
     {
         //
     }
+
+    public function showcat(Category $category)
+    {
+        // $category = Category::where('slug', $category)->firstOrFail();
+        // // $idd =$id;
+        // return view('showcat', compact('category'));
+    //    $category = Category::where('slug',$category)->first();
+        return $category;
+    }
 }
+
+

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أوزون سيستم</title>
+    <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600,700&display=swap" rel="stylesheet">
     <link href="{{ url('assets/plugins/global/plugins.bundle.css' )}}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
@@ -15,6 +15,11 @@
     <script src="{{ url('assets/js/moment.min.js')}}" type="text/javascript"></script>
     <script src="{{ url('assets/js/moment-ar.js')}}" type="text/javascript"></script>
     <style>
+        @font-face {
+            font-family: OptimusPrinceps;
+            src: url("{{asset('/fonts/al-jazeera-arabic-bold.woff')}}");
+        }
+
         body {
             background: #f2f2f2;
         }
@@ -163,87 +168,38 @@
 </head>
 
 <body>
-    <form  style="display: none" name="fbCommentCountform" id="fbCommentCountForm" action="{{ route('showpost.update', ['id'=>$idd]) }}" method="POST">
-        {{ csrf_field() }}
-        <input type="hidden" name="_method" value="PUT">
-
    
-        <input type="text" name="visitCount" id="hiddenFormPostVisitCounter" value="{{ $post->visit_count }}">
-    </form>
 
-    <div class="container-fluid">
 
-    </div>
-    <div class="mb-sm-4"></div>
-    <div class="mb-sm-4"></div>
-    <div class="mb-sm-4"></div>
 
-    <div class="wrapper">
-        <h5>الأخبار | {{ $post->category->title}}</h5>
-        <h1>{{ $post->title}}</h1>
-        <p>
-            <script>
-                document.write(moment.utc('{{ $post->created_at}}').fromNow());
-            </script>
-        </p>
 
-        <div class="mb-4"> <img src="{{ asset('storage/images/'.$post->img) }}" class="img-fluid" alt="Responsive image" width="1026" height="580"></div>
-        <caption>{{ $post->caption}}</caption>
 
+
+
+    <div class="container">
         <div class="row">
-            <div class="col-9">
-                <p style="font-family: Greta!important;font-size: 22px;">{{$post->body}}</p>
+            <div class="col-8">
+
+                @foreach($category->posts as $p)
+                <div class="card mainStory mb-4">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                        <img src="{{ asset('storage/images/'.$p->img) }}" class="img-fluid" alt="Responsive image">
+                        </div>
+                        <div class="col-8">
+                        <h2>{{ $p->title}}</h2>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+                @endforeach
+
             </div>
+            <div class="col-4"></div>
         </div>
     </div>
-
-
-
-    <script type="text/javascript">
-        $(document).on('ready', function() {
-
-            $(".regular").slick({
-                rtl: true,
-                dots: true,
-
-                slidesToShow: 3,
-                slidesToScroll: 3
-            });
-
-        });
-    </script>
-
-    <script>
-        window.addEventListener('load', function() {
-            var allimages = document.getElementsByTagName('img');
-            for (var i = 0; i < allimages.length; i++) {
-                if (allimages[i].getAttribute('data-src')) {
-                    allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
-                }
-            }
-        }, false)
-    </script>
-
-<script>
- 
-    setTimeout(function() {
-    
-      var $formVar = $('#fbCommentCountForm');
-      
-      let visitCount = document.getElementById('hiddenFormPostVisitCounter').value;
-      
-      let visitCountPlusOne = parseInt(visitCount) + 1;
-      document.getElementById('hiddenFormPostVisitCounter').value = visitCountPlusOne;
-      
-      $.ajax({
-        url: $formVar.prop("{{ route('showpost', ['id'=>$idd]) }}"),
-        method: 'PUT',
-        data: $formVar.serialize(),
-      });
-      }, 1000);
-    
-
-  </script>
 </body>
 
 </html>

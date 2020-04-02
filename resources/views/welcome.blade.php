@@ -10,10 +10,13 @@
     <link href="{{ url('assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/slick/slick.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/slick/slick-theme.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ url('css/app.css')}}">
+
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="{{ url('assets/slick/slick.js')}}" type="text/javascript"></script>
     <script src="{{ url('assets/js/moment.min.js')}}" type="text/javascript"></script>
     <script src="{{ url('assets/js/moment-ar.js')}}" type="text/javascript"></script>
+
 
     <link rel="stylesheet" href="{{ url('assets/js/mediaelementplayer.css')}}">
 
@@ -171,6 +174,21 @@
 </head>
 
 <body>
+
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12" >
+                @include('cookieConsent::index')
+
+            </div>
+        </div>
+
+    </div>
+
+
     <div class="container-fluid">
 
     </div>
@@ -359,23 +377,25 @@
                         <div class="row">
                             <div class="col-3 my-auto">
 
-                            <a href="#" title="Play video" class="play"></a>
-                            <button class="btn btn-primary " data-action="play">
-                            <i class="glyphicon glyphicon-play"></i>
-                            Play /
-                            <i class="glyphicon glyphicon-pause"></i>
-                            Pause
-                        </button>
+                                <a href="#" title="Play video" class="play"></a>
+                                <button class="btn btn-primary " data-action="play">
+                                    <i class="glyphicon glyphicon-play"></i>
+                                    Play /
+                                    <i class="glyphicon glyphicon-pause"></i>
+                                    Pause
+                                </button>
                             </div>
                             <div id="waveform" class="col-9">
-                               <center><div id="loading"></div></center> 
+                                <center>
+                                    <div id="loading"></div>
+                                </center>
 
                                 <canvas style="position: absolute; z-index: 2; left: 0px; top: 0px; bottom: 0px; height: 100%; pointer-events: none; width: 870px;" width="1740" height="400"></canvas>
 
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </div>
 

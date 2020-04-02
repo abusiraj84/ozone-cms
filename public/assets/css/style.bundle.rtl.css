@@ -66,6 +66,10 @@ body {
  @font-face { 
 font-family: Greta; src: url('../../storage/fonts/greta.ttf');
  }
+
+ @font-face { 
+  font-family: al-jazeera-arabic-bold; src: url('../../storage/fonts/Al-Jazeera-Arabic-Bold.woff');
+   }
   
   
 

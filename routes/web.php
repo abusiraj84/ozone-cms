@@ -20,8 +20,15 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomepageController@index')->name('welcome');
-Route::get('/post/{id}', 'HomepageController@show')->name('showpost');
+Route::get('/post/{title}', 'HomepageController@show')->name('showpost');
 Route::put('/post/{id}', 'HomepageController@update')->name('showpost.update');
+
+
+
+
+Route::get('/category/{slug}', 'HomepageController@showcat');
+
+
 
 
 Route::get('/admin', 'HomeController@index')->name('home');
