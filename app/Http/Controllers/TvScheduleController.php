@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Posts;
-use App\Category;
-use App\TvSchedule;
 
-class HomepageController extends Controller
+class TvScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +13,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        $posts = Posts::orderBy('id', 'DESC')->take(4)->skip(1)->limit(3)->get();
-        $first = Posts::orderBy('id', 'DESC')->take(1)->get();
-        $allposts =  Posts::orderBy('id', 'DESC')->get();
-        $activity =  Posts::orderBy('visit_count', 'DESC')->get();
-        $now =  TvSchedule::all();
-        return view('homepage', compact('categories', 'posts', 'first', 'allposts','activity','now'));
+        //
     }
 
     /**
@@ -54,9 +45,7 @@ class HomepageController extends Controller
      */
     public function show($id)
     {
-        $post = Posts::findOrFail($id);
-        $idd =$id;
-        return view('showpost', compact('post','idd'));
+        //
     }
 
     /**
@@ -79,12 +68,7 @@ class HomepageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Posts::find($id);
-        $visitCount = $request->visitCount;
-        $post->visit_count = $visitCount;
-        $post->save();
-        // return redirect()->back();
-
+        //
     }
 
     /**
@@ -97,15 +81,4 @@ class HomepageController extends Controller
     {
         //
     }
-
-    public function showcat(Category $category)
-    {
-        // $category = Category::where('slug', $category)->firstOrFail();
-        // // $idd =$id;
-        // return view('showcat', compact('category'));
-    //    $category = Category::where('slug',$category)->first();
-        return $category;
-    }
 }
-
-

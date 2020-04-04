@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomepageController@index')->name('welcome');
-Route::get('/post/{title}', 'HomepageController@show')->name('showpost');
+Route::get('/', 'HomepageController@index')->name('homepage');
+Route::get('/post/{id}', 'HomepageController@show')->name('showpost');
 Route::put('/post/{id}', 'HomepageController@update')->name('showpost.update');
 
 

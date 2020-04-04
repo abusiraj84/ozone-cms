@@ -126,7 +126,8 @@ class PostsController extends Controller
     public function edit(Posts $post )
     {
         $arr['post']= $post;
-        return view('admin.posts.edit')->with($arr);
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('categories','post'));
     }
 
  
