@@ -1,5 +1,3 @@
-
-
 @extends('layouts.admin')
 @section('content')
 
@@ -11,18 +9,18 @@
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
-                <h3 class="kt-subheader__title">التصنيفات</h3>
+                <h3 class="kt-subheader__title">المقالات</h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="{{url('/admin')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="" class="kt-subheader__breadcrumbs-link">
-                        التصنيفات </a>
+                        المقالات </a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="" class="kt-subheader__breadcrumbs-link">
                         عرض </a>
-                   
-                    
+
+
                     <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
                 </div>
             </div>
@@ -38,10 +36,10 @@
         <div class="kt-portlet kt-portlet--mobile">
             <div class="kt-portlet__head kt-portlet__head--lg">
                 <div class="kt-portlet__head-label">
-                <div class="kt-portlet__head-wrapper">
+                    <div class="kt-portlet__head-wrapper">
                         <div class="kt-portlet__head-actions">
-                            
-                            <h3 >
+
+                            <h3>
                                 <i class="la la-pen"></i>
                                 عدد المقالات - {{count($posts)}}
                             </h3>
@@ -54,7 +52,7 @@
                 <div class="kt-portlet__head-toolbar">
                     <div class="kt-portlet__head-wrapper">
                         <div class="kt-portlet__head-actions">
-                            
+
                             <a href="{{ route('admin.posts.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
                                 <i class="la la-plus"></i>
                                 تصنيف جديد
@@ -72,19 +70,19 @@
                 <div id="kt_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
                         <div class="col-sm-12">
-                        @if(session()->has('message'))
+                            @if(session()->has('message'))
 
-        {{ session()->get('message') }}
+                            {{ session()->get('message') }}
 
-@endif
+                            @endif
                             <table class="table table-striped- table-bordered table-hover table-checkable dataTable dtr-inline" id="kt_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 2178px;">
                                 <thead>
-                                    <tr role="row" >
+                                    <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 203.25px;font-weight:bold" aria-sort="ascending" aria-label="Record ID: activate to sort column descending">الترتيب</th>
                                         <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 181.25px;font-weight:bold" aria-label="Order ID: activate to sort column ascending">الصورة</th>
                                         <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 181.25px;font-weight:bold" aria-label="Order ID: activate to sort column ascending">العنوان</th>
-                                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 181.25px;font-weight:bold" aria-label="Country: activate to sort column ascending">نوع التصنيف</th>
-                                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 262.25px;font-weight:bold" aria-label="Ship City: activate to sort column ascending">عدد المنشورات	</th>
+                                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 181.25px;font-weight:bold" aria-label="Country: activate to sort column ascending">وسومات</th>
+                                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 262.25px;font-weight:bold" aria-label="Ship City: activate to sort column ascending">عدد القراءات </th>
                                         <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 312.25px;font-weight:bold" aria-label="Company Agent: activate to sort column ascending">المشرف</th>
                                         <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 206.25px;font-weight:bold" aria-label="Ship Date: activate to sort column ascending">وقت النشر</th>
                                         <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 161.25px;font-weight:bold" aria-label="Status: activate to sort column ascending">التصنيف الرئيسي</th>
@@ -92,55 +90,61 @@
                                         <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 192.5px;" aria-label="Actions">إجراءات</th>
                                     </tr>
                                 </thead>
-                              
+
                                 <tbody>
                                     <tr role="row" class="odd">
-                                    @if(count($posts))
-                                    @foreach ($posts as $p) 
-                                
-                                        <td class="sorting_1" tabindex="0 " style="font-weight:bold" >{{ $p->id }}</td>
-                                        <td><center><img src="{{ asset('storage/images/'.$p->img) }}" alt="" width="80" height="60"></center></td>
-                                        <td width="40%"  style="font-weight:bold">{{ $p->title }}</td>
+                                        @if(count($posts))
+                                        @foreach ($posts as $p)
 
-                                        <td  style="font-weight:bold">Indonesia</td>
-                                        <td  style="font-weight:bold">Cihaur</td>
-                                        <td  style="font-weight:bold">@if($p->user) {{$p->user->name}} @endif</td>
-                                        <td  style="font-weight:bold">{{ $p->created_at->format('H:i - d.m.Y') }}</td>
-                                        <td><span class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill" style="font-weight:bold">@if($p->category){{  $p->category->title }}@endif</span></td>
-                                        <td  style="font-weight:bold">
-                                        @if($p->is_active == 1)
-                                        <span class="kt-badge kt-badge--success kt-badge--dot">
-                                            @else
-                                            <span class="kt-badge kt-badge--danger kt-badge--dot">
-                                            @endif
-                                   
+                                        <td class="sorting_1" tabindex="0 " style="font-weight:bold">{{ $p->id }}</td>
+                                        <td>
+                                            <center><img src="{{ asset('storage/images/'.$p->img) }}" style="border-radius: 4px;" alt="" width="100" height="80"></center>
+                                        </td>
+                                        <td width="40%" style="font-weight:bold">{{ $p->title }}</td>
 
-                                        </span>&nbsp;
-                                        
-                                      
+                                        <td style="font-weight:bold">
+                                            @foreach ($p->tags as $tag)
+                                            <span class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill" style="font-weight:bold">  {{ $tag->name }} </span>
+                                            @endforeach
+                                        </td>
+                                        <td style="font-weight:bold">{{$p->visit_count}}</td>
+                                        <td style="font-weight:bold">@if($p->user) {{$p->user->name}} @endif</td>
+                                        <td style="font-weight:bold">{{ $p->created_at->format('H:i - d.m.Y') }}</td>
+                                        <td><span class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill" style="font-weight:bold">@if($p->category){{ $p->category->title }}@endif</span></td>
+                                        <td style="font-weight:bold">
                                             @if($p->is_active == 1)
-                                            <span class="kt-font-bold kt-font-success">
-                                           <span style="font-weight:bold"> فعّال</span>
-                                            @else
-                                            <span class="kt-font-bold kt-font-danger">
-                                            <span style="font-weight:bold">  غير فعّال</span>
-                                            @endif
-                                        </span></td>
-                                        <td>  <a href="{{ route('admin.posts.edit',$p->id)}}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  > <i class="la la-edit"></i> </a>
-                                        <span class="dropdown"> <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-sm btn-clean btn-icon btn-icon-md" href="javascript:;" id="kt_notify_btn"> <i class="la la-remove"></i> </a>  
-                                        <form class="kt-form " method="POST" action="{{ route('admin.posts.destroy',$p->id)}}">
-                                            {{ method_field('DELETE') }}
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            
-                                        </form>
-                                    </td>
-                                
+                                            <span class="kt-badge kt-badge--success kt-badge--dot">
+                                                @else
+                                                <span class="kt-badge kt-badge--danger kt-badge--dot">
+                                                    @endif
+
+
+                                                </span>&nbsp;
+
+
+                                                @if($p->is_active == 1)
+                                                <span class="kt-font-bold kt-font-success">
+                                                    <span style="font-weight:bold"> فعّال</span>
+                                                    @else
+                                                    <span class="kt-font-bold kt-font-danger">
+                                                        <span style="font-weight:bold"> غير فعّال</span>
+                                                        @endif
+                                                    </span></td>
+                                        <td> <a href="{{ route('admin.posts.edit',$p->slug)}}" class="btn btn-sm btn-clean btn-icon btn-icon-md"> <i class="la la-edit"></i> </a>
+                                            <span class="dropdown"> <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-sm btn-clean btn-icon btn-icon-md" href="javascript:;" id="kt_notify_btn"> <i class="la la-remove"></i> </a>
+                                                <form class="kt-form " method="POST" action="{{ route('admin.posts.destroy',$p->id)}}">
+                                                    {{ method_field('DELETE') }}
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                                </form>
+                                        </td>
+
 
                                     </tr>
                                     @endforeach
                                     @else
-                                   <td colspan="10">لا يوجد مقالات</td>
-                                   @endif
+                                    <td colspan="10">لا يوجد مقالات</td>
+                                    @endif
                                 </tbody>
                             </table>
                             <div id="kt_table_1_processing" class="dataTables_processing card" style="display: none;">جاري التحميل...</div>

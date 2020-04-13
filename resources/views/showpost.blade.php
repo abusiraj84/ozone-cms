@@ -163,7 +163,7 @@
 </head>
 
 <body>
-    <form  style="display: none" name="fbCommentCountform" id="fbCommentCountForm" action="{{ route('showpost.update', ['id'=>$idd]) }}" method="POST">
+    <form  style="display: none" name="fbCommentCountform" id="fbCommentCountForm" action="{{ route('showpost.update', ['id'=>$idd,$post->slug]) }}" method="POST">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="PUT">
 
@@ -236,7 +236,7 @@
       document.getElementById('hiddenFormPostVisitCounter').value = visitCountPlusOne;
       
       $.ajax({
-        url: $formVar.prop("{{ route('showpost', ['id'=>$idd]) }}"),
+        url: $formVar.prop("{{ route('showpost', ['id'=>$idd,$post->slug]) }}"),
         method: 'PUT',
         data: $formVar.serialize(),
       });

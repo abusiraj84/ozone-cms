@@ -1146,12 +1146,12 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="kt-header__topbar-item kt-header__topbar-item--user">
 							<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
 								<div class="kt-header__topbar-user">
-									<span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-									<span class="kt-header__topbar-username kt-hidden-mobile">Sean</span>
+									<span class="kt-header__topbar-welcome kt-hidden-mobile">مرحبا،</span>
+									<span class="kt-header__topbar-username kt-hidden-mobile">{{ Auth::user()->name }}</span>
 									<img class="kt-hidden" alt="Pic" src="assets/media/users/300_25.jpg" />
 
 									<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-									<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>
+									<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">{{ mb_substr(Auth::user()->name,0,1 )}}</span>
 								</div>
 							</div>
 							<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
@@ -1162,7 +1162,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<img class="kt-hidden" alt="Pic" src="assets/media/users/300_25.jpg" />
 
 										<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-										<span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
+										<span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{ mb_substr(Auth::user()->name,0,1 )}}</span>
 									</div>
 									<div class="kt-user-card__name">
 										Sean Stone

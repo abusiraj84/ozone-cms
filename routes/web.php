@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\PostEvent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +21,27 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomepageController@index')->name('homepage');
-Route::get('/post/{id}', 'HomepageController@show')->name('showpost');
+
+// test loadmore
+Route::get('/loadmore', 'HomepageController@loadmore')->name('loadmore');
+
 Route::put('/post/{id}', 'HomepageController@update')->name('showpost.update');
 
 
 
 
 Route::get('/category/{slug}', 'HomepageController@showcat');
+Route::get('/post/{id}-{slug}', 'HomepageController@show')->name('showpost');
+
+
+Route::get('event',function(){
+    event(new PostEvent('Hey How are You!'));
+});
+
+Route::get('/noti',function(){
+    return view('noti');
+});
+
 
 
 

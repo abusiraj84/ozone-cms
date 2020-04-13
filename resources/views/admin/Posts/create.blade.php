@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-         
+
 
 
             <div class="row">
@@ -125,7 +125,7 @@
 
         <div class="col-lg-4">
 
-        <div class="row">
+            <div class="row">
                 <div class="col-12">
                     <div class="kt-portlet">
                         <div class="kt-portlet__body">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
 
                 <div class="col-3">
@@ -266,6 +266,21 @@
                             <div class="form-group">
                                 <label style="font-weight: bold;margin-bottom:20px">الصورة :</label>
                                 <input type="file" class="form-control" name="img" aria-describedby="email-error">
+                          
+                                @if(Session::has('message'))
+                                <div class="alert alert-success mt-5"> {{ Session::get('message') }}</div>
+                                @endif
+                                @if (count($errors) > 0)
+         <div class = "alert alert-danger">
+            <ul>
+               @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+               @endforeach
+            </ul>
+         </div>
+      @endif
+      
+    
 
                                 <!-- <span class="form-text text-muted">We'll never share your email with anyone else</span> -->
                             </div>

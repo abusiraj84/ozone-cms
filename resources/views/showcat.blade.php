@@ -178,9 +178,12 @@
 
     <div class="container">
         <div class="row">
+        @foreach($category as $c)
+            <div class="col-12"><h2>{{$c->title}}</h2></div>
+            @endforeach
             <div class="col-8">
 
-                @foreach($category->posts as $p)
+                @foreach($posts as $p)
                 <div class="card mainStory mb-4">
                     <div class="card-body">
                     <div class="row">

@@ -7,7 +7,7 @@
                         <img src="{{ asset('storage/images/'.$f->img) }}" class="img-fluid" alt="Responsive image">
                     </div>
                     <div class="col col-lg-5">
-                        <a href="{{url('post/'.$f->id)}}" style="font-size: 32px;color: #000;"><strong>{{$f->title}}</strong></a>
+                        <a href="{{url('post/'.$f->id.'-'.$f->slug)}}" style="font-size: 32px;color: #000;"><strong>{{$f->title}}</strong></a>
                         <div class="mb-sm-4"></div>
                         <p style="font-size: 18px;color: #454545;margin-top: 12px;margin-bottom: 0;"><strong>{{$f->description}}</strong></p>
 

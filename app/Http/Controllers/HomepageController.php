@@ -6,9 +6,27 @@ use Illuminate\Http\Request;
 use App\Posts;
 use App\Category;
 use App\TvSchedule;
+use Str;
 
 class HomepageController extends Controller
 {
+
+    public function loadmore(Request $request)
+    {
+        $allposts = Posts::paginate(5);
+     
+
+
+    	if ($request->ajax()) {
+    		$view = view('loadmoredate',compact('allposts'))->render();
+            return response()->json(['html'=>$view]);
+        }
+
+
+    	return view('loadmore',compact('allposts'));
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +40,7 @@ class HomepageController extends Controller
         $allposts =  Posts::orderBy('id', 'DESC')->get();
         $activity =  Posts::orderBy('visit_count', 'DESC')->get();
         $now =  TvSchedule::all();
-        return view('homepage', compact('categories', 'posts', 'first', 'allposts','activity','now'));
+        return view('homepage', compact('categories', 'posts', 'first', 'allposts', 'activity', 'now'));
     }
 
     /**
@@ -52,11 +70,14 @@ class HomepageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$slug)
     {
-        $post = Posts::findOrFail($id);
-        $idd =$id;
+        $post = Posts::where('id', $id)->where('slug', $slug)->first();
+
+
+       $idd = $id;
         return view('showpost', compact('post','idd'));
+        
     }
 
     /**
@@ -98,14 +119,15 @@ class HomepageController extends Controller
         //
     }
 
-    public function showcat(Category $category)
+    public function showcat($slug)
     {
-        // $category = Category::where('slug', $category)->firstOrFail();
-        // // $idd =$id;
-        // return view('showcat', compact('category'));
-    //    $category = Category::where('slug',$category)->first();
-        return $category;
+        $category = Category::with('posts')->get()->where('slug', 'like', $slug);
+
+        $posts = Posts::orderBy('id', 'desc')->whereHas('category', function ($query) use ($slug) {
+                $query->where('slug', 'like', $slug);
+            })->paginate(5);
+
+        // return view
+        return view('showcat')->withPosts($posts)->with('category', $category);
     }
 }
-
-
